@@ -1,2 +1,23 @@
 // Home page styles
 @import "master-page";
+
+$grey-color: rgb(245,245,245);
+$grey-border-color: rgb(243,243,243);
+
+#navbarNavAltMarkup {
+    i {
+        color: rgb(0, 0, 0);
+    }
+}
+
+#navbarNavAltMarkup {
+    i{
+        excel-icon{
+            color: green;
+        }
+    }
+    
+}    
+
+
+ 
