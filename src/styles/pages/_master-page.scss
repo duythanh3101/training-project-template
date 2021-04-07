@@ -12,9 +12,12 @@
 @import '../layout/footer';
 @import '../layout/forms';
 
-// @import '../components/buttons';
 @import '../components/table';
+@import '../components/navbar';
 
-@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
-// @import "../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
-
+@import "~bootstrap/scss/bootstrap.scss";
+// @import "~@fortawesome/fontawesome-free/scss/fontawesome";
+// @import '~@fortawesome/fontawesome-free/scss/solid';
+// @import '~@fortawesome/fontawesome-free/scss/regular';
+// @import '~@fortawesome/fontawesome-free/scss/brands';
+// @import '~@fortawesome/fontawesome-free/scss/v4-shims';
