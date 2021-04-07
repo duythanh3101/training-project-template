@@ -16145,16 +16145,39 @@ table th:first-child {
   background-color: #F5F5F5 !important;
 }
 
+ul li a i {
+  position: relative;
+  width: 25px;
+  height: 25px;
+}
 ul li a i:first-child {
-  margin-right: 0.25rem;
-  width: 1.25rem;
   color: #d42c91;
 }
 ul li a img {
-  width: 20;
-  height: 20;
+  width: 25;
+  height: 25;
 }
 
+@media (max-width: 991.98px) {
+  ul li a i {
+    position: relative;
+    margin-right: 0.25rem;
+    fill: #fff;
+    width: 25px;
+    height: 25px;
+  }
+  ul li a i:first-child {
+    color: #d42c91;
+  }
+  ul li a i:last-child {
+    margin-right: 0.25rem;
+  }
+  ul li a img {
+    width: 25;
+    height: 25;
+    margin-right: 0.25rem;
+  }
+}
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
