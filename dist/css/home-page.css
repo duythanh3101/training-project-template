@@ -9994,6 +9994,11 @@ table td .excel-icon {
   width: 30;
   height: 30;
 }
+table th .new-file-icon i,
+table td .new-file-icon i {
+  visibility: visible;
+  text-align: right;
+}
 table th {
   border-top: none !important;
   font-size: 0.85em;
