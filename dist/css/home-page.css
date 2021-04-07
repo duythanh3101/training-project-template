@@ -16068,8 +16068,6 @@ h3 {
   }
 }
 table {
-  border: 1px solid #fff;
-  border-collapse: collapse;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -16077,7 +16075,7 @@ table {
 }
 table tr {
   background-color: #fff;
-  border: 1px solid #F5F5F5;
+  border: 1px solid white;
 }
 table th,
 table td {
@@ -16088,6 +16086,11 @@ table th:first-child,
 table td:first-child {
   width: 5%;
   text-align: right;
+}
+table th .excel-icon,
+table td .excel-icon {
+  width: 30;
+  height: 30;
 }
 table th {
   font-size: 0.85em;
@@ -16101,39 +16104,27 @@ table th:first-child {
 
 @media (max-width: 991.98px) {
   table {
-    border: 0;
+    border: 1px solid #F5F5F5;
   }
   table thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+    display: none;
   }
   table tr {
-    border-bottom: 3px solid #ddd;
     display: block;
     margin-bottom: 0.625em;
   }
   table td {
     border-bottom: 1px solid #ddd;
     display: block;
-    font-size: 0.8em;
-    text-align: right;
+    text-align: left;
   }
   table td::before {
-    /*
-    * aria-label has no advantage, it won't be read inside a table
-    content: attr(aria-label);
-    */
     content: attr(data-label);
     float: left;
     font-weight: bold;
     text-transform: uppercase;
     font-style: italic;
+    width: 30%;
   }
   table td:last-child {
     border-bottom: 0;
@@ -16145,9 +16136,23 @@ table th:first-child {
     width: 100%;
     text-align: right;
   }
+  table td:first-child::before {
+    text-align: left;
+    width: 30%;
+  }
 }
 .navbar-background {
   background-color: #F5F5F5 !important;
+}
+
+ul li a i:first-child {
+  margin-right: 0.25rem;
+  width: 1.25rem;
+  color: #d42c91;
+}
+ul li a img {
+  width: 20;
+  height: 20;
 }
 
 /*!
