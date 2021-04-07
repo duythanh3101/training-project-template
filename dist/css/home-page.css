@@ -16093,6 +16093,7 @@ table td .excel-icon {
   height: 30;
 }
 table th {
+  border-top: none !important;
   font-size: 0.85em;
   letter-spacing: 0.1em;
   text-transform: uppercase;
