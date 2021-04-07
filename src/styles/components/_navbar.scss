@@ -1,4 +1,4 @@
-.navbar-background{
+.navbar-background > *{
     background-color: $grey !important;
 }
 
@@ -7,6 +7,7 @@ ul {
         a {
             i {
                 position: relative;
+                display: initial !important;
                 width: 25px;
                 height: 25px;
             }
@@ -25,9 +26,14 @@ ul {
 @include media-breakpoint-down(md) {
     ul {
         li {
+            display: block;
+            &:hover{
+                background: $grey-darker;
+            }
             a {
                 i {
                     position: relative;
+                    display: inline-block !important;
                     margin-right: 0.25rem;
                     fill: #fff;
                     width: 25px;
