@@ -9966,6 +9966,10 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.table-container {
+  padding: 0;
+}
+
 table {
   margin: 0;
   padding: 0;
@@ -9994,10 +9998,14 @@ table td .excel-icon {
   width: 30;
   height: 30;
 }
-table th .new-file-icon i,
-table td .new-file-icon i {
-  visibility: visible;
+table th .col-name-item i,
+table td .col-name-item i {
+  visibility: hidden;
   text-align: right;
+}
+table th .col-name-item i.is-new-file,
+table td .col-name-item i.is-new-file {
+  visibility: visible;
 }
 table th {
   border-top: none !important;
@@ -10054,6 +10062,10 @@ table th:hover {
 }
 .navbar-background > * {
   background-color: #F5F5F5 !important;
+}
+
+.navbar-container {
+  padding: 0 !important;
 }
 
 ul li a i {

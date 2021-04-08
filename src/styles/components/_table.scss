@@ -1,3 +1,7 @@
+.table-container{
+  padding: 0;
+}
+
 table {
   margin: 0;
   padding: 0;
@@ -27,12 +31,15 @@ table {
       height: 30;
     }
 
-    .new-file-icon{
+    .col-name-item{
       i {
-        visibility: visible;
+        visibility: hidden;
         text-align: right;
 
-      
+       
+      }
+      i.is-new-file{
+        visibility: visible;
       }
     }
 
