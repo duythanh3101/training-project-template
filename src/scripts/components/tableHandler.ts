@@ -6,10 +6,13 @@ const tableHandler = (
   container: HTMLElement | null,
 ) => {
   console.log('data table', list);
+
   if (list && container) {
     let html = '';
     list.map(x => {
-      html += `<tr>
+      html += `<tr data-id='${x.id}' data-type='${
+        x.type
+      }' data-row=''>
             <td data-label="File Type">
                 ${
                   x.type == FileEnum.File
@@ -24,7 +27,18 @@ const tableHandler = (
         </tr>`;
     });
     container.innerHTML = html;
+
+    // Add event click after loading finish
+    // -- Only add events when innerHTML overwrites are done.
+    const targetRows = container.querySelectorAll('tr[data-row]');
+    for (const row in targetRows) {
+      targetRows[row].addEventListener('click', onRowClick, false);
+    }
   }
+};
+
+const onRowClick = (event: any): any => {
+  console.log(event, 'aaaaaaaaaaaaaaaaaaaaaaaaa');
 };
 
 export default tableHandler;

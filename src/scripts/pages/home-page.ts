@@ -15,6 +15,6 @@ ready(() => {
   const dataService = new FileService();
   dataService
     .getData()
-    .then(response => tableHandler(dataService.Data(), tableHtml))
+    .then(response => tableHandler(dataService.data, tableHtml))
     .catch(err => console.error(err));
 });

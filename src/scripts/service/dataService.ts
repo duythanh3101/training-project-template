@@ -76,7 +76,13 @@ const dataFiles = [
 ];
 
 class FileService {
-    data: Array<IFileEntity> = [];
+    private _data: Array<IFileEntity> = [];
+    get data(): Array<IFileEntity>  {
+        return this._data;
+    }
+    set data(value: Array<IFileEntity>) {
+        this._data = value;
+    }
 
     public getData = async () => {
         let jsonData: any[] = dataFiles;
@@ -85,10 +91,10 @@ class FileService {
             try {
                 switch (obj.type) {
                     case FileEnum.File:
-                        this.data.push(<FileType>obj);
+                        this._data.push(<FileType>obj);
                         break;
                     case FileEnum.Folder:
-                        this.data.push(<Folder>obj);
+                        this._data.push(<Folder>obj);
                         break;
                     default:
                         throw new Error(
@@ -101,11 +107,32 @@ class FileService {
         });
     }
 
+    public getData2 = async (jsonData: any[], root: Array<IFileEntity> = [] ) => {
 
-
-    public Data() {
-        return this.data;
+        if (jsonData){
+            jsonData.forEach(obj => {
+                try {
+                    switch (obj.type) {
+                        case FileEnum.File:
+                            root.push(<FileType>obj);
+                            break;
+                        case FileEnum.Folder:
+                            root.push(<Folder>obj);
+                            this.getData2(obj, root);
+                            break;
+                        default:
+                            throw new Error(
+                                `Wrong file type ${JSON.stringify(obj)}`,
+                            );
+                    }
+                } catch (err) {
+                    console.error(err);
+                }
+            });
+        }
+       
     }
+
 }
 
 export default FileService;

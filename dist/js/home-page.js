@@ -140,7 +140,7 @@ const tableHandler = (list, container) => {
   if (list && container) {
     let html = '';
     list.map(x => {
-      html += `<tr>
+      html += `<tr data-id='${x.id}' data-type='${x.type}' data-row=''>
             <td data-label="File Type">
                 ${x.type == _entities_enums_FileEnum__WEBPACK_IMPORTED_MODULE_0__["FileEnum"].File ? '<img src="https://img.icons8.com/color/50/000000/ms-excel.png" alt="excel-icon" class="excel-icon" />' : '<i class="far fa-folder"></i>'}
             </td>
@@ -150,8 +150,19 @@ const tableHandler = (list, container) => {
             <td></td>
         </tr>`;
     });
-    container.innerHTML = html;
+    container.innerHTML = html; // Add event click after loading finish
+    // -- Only add events when innerHTML overwrites are done.
+
+    const targetRows = container.querySelectorAll('tr[data-row]');
+
+    for (const row in targetRows) {
+      targetRows[row].addEventListener('click', onRowClick, false);
+    }
   }
+};
+
+const onRowClick = event => {
+  console.log(event, 'aaaaaaaaaaaaaaaaaaaaaaaaa');
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (tableHandler);
@@ -180,7 +191,7 @@ const tableHtml = document.querySelector('#table-list tbody');
 Object(_utilities_helper__WEBPACK_IMPORTED_MODULE_0__["default"])(() => {
   Object(_components_grid__WEBPACK_IMPORTED_MODULE_1__["default"])();
   const dataService = new _service_dataService__WEBPACK_IMPORTED_MODULE_3__["default"]();
-  dataService.getData().then(response => Object(_components_tableHandler__WEBPACK_IMPORTED_MODULE_2__["default"])(dataService.Data(), tableHtml)).catch(err => console.error(err));
+  dataService.getData().then(response => Object(_components_tableHandler__WEBPACK_IMPORTED_MODULE_2__["default"])(dataService.data, tableHtml)).catch(err => console.error(err));
 });
 
 /***/ }),
@@ -258,7 +269,7 @@ const dataFiles = [{
 
 class FileService {
   constructor() {
-    this.data = [];
+    this._data = [];
 
     this.getData = async () => {
       let jsonData = dataFiles;
@@ -266,11 +277,13 @@ class FileService {
         try {
           switch (obj.type) {
             case _entities_enums_FileEnum__WEBPACK_IMPORTED_MODULE_0__["FileEnum"].File:
-              this.data.push(obj);
+              this._data.push(obj);
+
               break;
 
             case _entities_enums_FileEnum__WEBPACK_IMPORTED_MODULE_0__["FileEnum"].Folder:
-              this.data.push(obj);
+              this._data.push(obj);
+
               break;
 
             default:
@@ -281,10 +294,38 @@ class FileService {
         }
       });
     };
+
+    this.getData2 = async (jsonData, root = []) => {
+      if (jsonData) {
+        jsonData.forEach(obj => {
+          try {
+            switch (obj.type) {
+              case _entities_enums_FileEnum__WEBPACK_IMPORTED_MODULE_0__["FileEnum"].File:
+                root.push(obj);
+                break;
+
+              case _entities_enums_FileEnum__WEBPACK_IMPORTED_MODULE_0__["FileEnum"].Folder:
+                root.push(obj);
+                this.getData2(obj, root);
+                break;
+
+              default:
+                throw new Error(`Wrong file type ${JSON.stringify(obj)}`);
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        });
+      }
+    };
   }
 
-  Data() {
-    return this.data;
+  get data() {
+    return this._data;
+  }
+
+  set data(value) {
+    this._data = value;
   }
 
 }
