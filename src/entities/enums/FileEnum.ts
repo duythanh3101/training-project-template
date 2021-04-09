@@ -1,5 +1,5 @@
-export enum FileEnum{
-    None = 0,
-    File = 1, 
-    Folder = 2
+export enum FileEnum {
+  None = 'NONE',
+  File = 'FILE',
+  Folder = 'FOLDER',
 }

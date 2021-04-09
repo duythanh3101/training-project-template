@@ -7,7 +7,6 @@
 
 	<link rel="stylesheet" href="dist/css/home-page.css">
 	<link rel="stylesheet" href="node_modules\@fortawesome\fontawesome-free\css\all.min.css">
-	<!-- <script src="dist/js/home-page.js"></script> -->
 
 </head>
 
@@ -76,12 +75,12 @@
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-file-modal">
 				<i class="fas fa-file"></i> New file
 			</button>
-			<button type="button" class="btn btn-primary">
+			<button type="submit" class="btn btn-primary" id="folderBtn">
 				<i class="fas fa-folder"></i> New folder
 			</button>
 		</div>
 
-		<table class="table">
+		<table class="table" id='table-list'>
 			<thead>
 				<tr>
 					<th>
@@ -231,6 +230,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+		<script src="dist/js/home-page.js"></script>
 
 
 </body>

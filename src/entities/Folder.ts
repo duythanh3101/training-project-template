@@ -1,5 +1,5 @@
-import { BaseEntity } from "./BaseEntity";
+import { IFileEntity } from './IFileEntity';
 
-export interface Folder extends BaseEntity{
-    subFolders: BaseEntity[];
+export interface Folder extends IFileEntity {
+  subFolders: IFileEntity[];
 }

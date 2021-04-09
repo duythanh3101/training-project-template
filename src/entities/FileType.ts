@@ -1,7 +1,6 @@
-import { BaseEntity } from "./BaseEntity";
-import { FileEnum } from "./enums/FileEnum";
+import { IFileEntity } from './IFileEntity';
+import { FileEnum } from './enums/FileEnum';
 
-export interface FileType extends BaseEntity{
-    extension: string
-    
+export interface FileType extends IFileEntity {
+  extension: string;
 }

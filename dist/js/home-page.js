@@ -86,6 +86,26 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/entities/enums/FileEnum.ts":
+/*!****************************************!*\
+  !*** ./src/entities/enums/FileEnum.ts ***!
+  \****************************************/
+/*! exports provided: FileEnum */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FileEnum", function() { return FileEnum; });
+var FileEnum;
+
+(function (FileEnum) {
+  FileEnum["None"] = "NONE";
+  FileEnum["File"] = "FILE";
+  FileEnum["Folder"] = "FOLDER";
+})(FileEnum || (FileEnum = {}));
+
+/***/ }),
+
 /***/ "./src/scripts/components/_grid.ts":
 /*!*****************************************!*\
   !*** ./src/scripts/components/_grid.ts ***!
@@ -102,6 +122,42 @@ const renderGrid = () => {// TODO: implement code to Render grid
 
 /***/ }),
 
+/***/ "./src/scripts/components/tableHandler.ts":
+/*!************************************************!*\
+  !*** ./src/scripts/components/tableHandler.ts ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _entities_enums_FileEnum__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../entities/enums/FileEnum */ "./src/entities/enums/FileEnum.ts");
+
+
+const tableHandler = (list, container) => {
+  console.log('data table', list);
+
+  if (list && container) {
+    let html = '';
+    list.map(x => {
+      html += `<tr>
+            <td data-label="File Type">
+                ${x.type == _entities_enums_FileEnum__WEBPACK_IMPORTED_MODULE_0__["FileEnum"].File ? '<img src="https://img.icons8.com/color/50/000000/ms-excel.png" alt="excel-icon" class="excel-icon" />' : '<i class="far fa-folder"></i>'}
+            </td>
+            <td data-label="Name">${x.name}</td>
+            <td data-label="Modified">${x.modified}</td>
+            <td data-label="Modified By">${x.modifiedBy}</td>
+            <td></td>
+        </tr>`;
+    });
+    container.innerHTML = html;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (tableHandler);
+
+/***/ }),
+
 /***/ "./src/scripts/pages/home-page.ts":
 /*!****************************************!*\
   !*** ./src/scripts/pages/home-page.ts ***!
@@ -113,16 +169,127 @@ const renderGrid = () => {// TODO: implement code to Render grid
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utilities_helper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utilities/_helper */ "./src/scripts/utilities/_helper.ts");
 /* harmony import */ var _components_grid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/_grid */ "./src/scripts/components/_grid.ts");
+/* harmony import */ var _components_tableHandler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/tableHandler */ "./src/scripts/components/tableHandler.ts");
+/* harmony import */ var _service_dataService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/dataService */ "./src/scripts/service/dataService.ts");
+// import $ from 'jquery';
 
 
 
-function myFunction() {
-  console.log('hello');
-}
 
+const tableHtml = document.querySelector('#table-list tbody');
 Object(_utilities_helper__WEBPACK_IMPORTED_MODULE_0__["default"])(() => {
   Object(_components_grid__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  const dataService = new _service_dataService__WEBPACK_IMPORTED_MODULE_3__["default"]();
+  dataService.getData().then(response => Object(_components_tableHandler__WEBPACK_IMPORTED_MODULE_2__["default"])(dataService.Data(), tableHtml)).catch(err => console.error(err));
 });
+
+/***/ }),
+
+/***/ "./src/scripts/service/dataService.ts":
+/*!********************************************!*\
+  !*** ./src/scripts/service/dataService.ts ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _entities_enums_FileEnum__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../entities/enums/FileEnum */ "./src/entities/enums/FileEnum.ts");
+
+const dataFiles = [{
+  id: 100,
+  name: 'Hihi',
+  modified: '03/03/2021',
+  modifiedBy: 'Thanh Duy Pham',
+  subFolders: [{
+    id: 1,
+    name: 'aaaa.exe',
+    createDate: '09/04/2021',
+    createBy: 'aaaa',
+    type: 'FILE',
+    modified: '09/03/2021',
+    modifiedBy: 'Tran Minh Hoang'
+  }, {
+    id: 2,
+    name: 'bbb.exe',
+    createDate: '09/04/2021',
+    createBy: 'bbb',
+    type: 'FILE',
+    modified: '09/03/2021',
+    modifiedBy: 'Tran Minh Hoang'
+  }, {
+    subFolders: [{
+      id: 3,
+      name: 'cccc.exe',
+      createDate: '09/04/2021',
+      createBy: 'cccc',
+      type: 'FILE',
+      modified: '09/03/2021',
+      modifiedBy: 'Tran Minh Hoang'
+    }, {
+      id: 4,
+      name: 'dddd.exe',
+      createDate: '09/04/2021',
+      createBy: 'dddd',
+      type: 'FILE',
+      modified: '09/03/2021',
+      modifiedBy: 'Tran Minh Hoang'
+    }],
+    type: 'FOLDER'
+  }],
+  type: 'FOLDER'
+}, {
+  id: 5,
+  name: 'eeee.exe',
+  createDate: '09/04/2021',
+  createBy: 'eeee',
+  type: 'FILE',
+  modified: '09/03/2021',
+  modifiedBy: 'Tran Minh Hoang'
+}, {
+  id: 6,
+  name: 'ffff.exe',
+  createDate: '09/04/2021',
+  createBy: 'ffff',
+  type: 'FILE',
+  modified: '09/03/2021',
+  modifiedBy: 'Tran Minh Hoang'
+}];
+
+class FileService {
+  constructor() {
+    this.data = [];
+
+    this.getData = async () => {
+      let jsonData = dataFiles;
+      jsonData.forEach(obj => {
+        try {
+          switch (obj.type) {
+            case _entities_enums_FileEnum__WEBPACK_IMPORTED_MODULE_0__["FileEnum"].File:
+              this.data.push(obj);
+              break;
+
+            case _entities_enums_FileEnum__WEBPACK_IMPORTED_MODULE_0__["FileEnum"].Folder:
+              this.data.push(obj);
+              break;
+
+            default:
+              throw new Error(`Wrong file type ${JSON.stringify(obj)}`);
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      });
+    };
+  }
+
+  Data() {
+    return this.data;
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (FileService);
 
 /***/ }),
 
