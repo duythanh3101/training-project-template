@@ -115,6 +115,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_grid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/_grid */ "./src/scripts/components/_grid.ts");
 
 
+
+function myFunction() {
+  console.log('hello');
+}
+
 Object(_utilities_helper__WEBPACK_IMPORTED_MODULE_0__["default"])(() => {
   Object(_components_grid__WEBPACK_IMPORTED_MODULE_1__["default"])();
 });

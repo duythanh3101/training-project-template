@@ -1,4 +1,4 @@
-.table-container{
+.table-container {
   padding: 0;
 }
 
@@ -31,18 +31,15 @@ table {
       height: 30;
     }
 
-    .col-name-item{
+    .col-name-item {
       i {
         visibility: hidden;
         text-align: right;
-
-       
       }
-      i.is-new-file{
+      i.is-new-file {
         visibility: visible;
       }
     }
-
   }
 
   th {
@@ -61,6 +58,11 @@ table {
   }
 }
 
+
+// @media (hover: none) {
+//   table tr:hover { color: red; }
+// }
+
 @include media-breakpoint-down(md) {
   table {
     border: 1px solid $grey;
@@ -71,6 +73,9 @@ table {
     tr {
       display: block;
       margin-bottom: 0.625em;
+
+
+     
     }
 
     td {
@@ -101,6 +106,10 @@ table {
           width: 30%;
         }
       }
+      // &:hover {
+      //   background-color: red !important;
+      // }
+
     }
   }
 }
