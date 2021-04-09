@@ -3,9 +3,9 @@ import { IFileEntity } from '../../entities/IFileEntity';
 
 const tableHandler = (
   list: Array<IFileEntity>,
-  container: HTMLElement | null,
+  container: HTMLTableElement | null,
 ) => {
-  console.log('data table', list);
+  // console.log('data table', list);
 
   if (list && container) {
     let html = '';
@@ -31,14 +31,16 @@ const tableHandler = (
     // Add event click after loading finish
     // -- Only add events when innerHTML overwrites are done.
     const targetRows = container.querySelectorAll('tr[data-row]');
-    for (const row in targetRows) {
-      targetRows[row].addEventListener('click', onRowClick, false);
+    if (targetRows) {
+      targetRows.forEach(row =>
+        row.addEventListener('click', onRowClick),
+      );
     }
   }
 };
 
 const onRowClick = (event: any): any => {
-  console.log(event, 'aaaaaaaaaaaaaaaaaaaaaaaaa');
+  console.log(event);
 };
 
 export default tableHandler;

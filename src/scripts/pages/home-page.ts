@@ -5,7 +5,7 @@ import modal from '../components/modalHandler';
 import tableHandler from '../components/tableHandler';
 import FileService from '../service/dataService';
 
-const tableHtml = document.querySelector<HTMLElement>(
+const tableHtml = document.querySelector<HTMLTableElement>(
   '#table-list tbody',
 );
 

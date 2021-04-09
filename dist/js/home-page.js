@@ -135,8 +135,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const tableHandler = (list, container) => {
-  console.log('data table', list);
-
+  // console.log('data table', list);
   if (list && container) {
     let html = '';
     list.map(x => {
@@ -155,14 +154,14 @@ const tableHandler = (list, container) => {
 
     const targetRows = container.querySelectorAll('tr[data-row]');
 
-    for (const row in targetRows) {
-      targetRows[row].addEventListener('click', onRowClick, false);
+    if (targetRows) {
+      targetRows.forEach(row => row.addEventListener('click', onRowClick));
     }
   }
 };
 
 const onRowClick = event => {
-  console.log(event, 'aaaaaaaaaaaaaaaaaaaaaaaaa');
+  console.log(event);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (tableHandler);
